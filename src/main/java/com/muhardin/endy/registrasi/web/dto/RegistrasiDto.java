@@ -1,4 +1,4 @@
-package com.yeahbutstill.web.registrasi.dto;
+package com.muhardin.endy.registrasi.web.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -8,13 +8,13 @@ import lombok.Data;
 
 @Data
 public class RegistrasiDto {
-    @NotEmpty @NotNull @Size(min = 3, max = 100)
+
+    @NotNull @NotEmpty @Size(min = 3, max = 255)
     private String fullname;
 
-    @NotEmpty @NotNull @Size(min = 10, max = 15)
-    private String nomorHandphone;
-
-    @NotEmpty @NotNull @Email
-    @Size(min = 10, max = 255)
+    @NotNull @NotEmpty @Email
     private String email;
+
+    @NotNull @NotEmpty
+    private String nomorHandphone;
 }
