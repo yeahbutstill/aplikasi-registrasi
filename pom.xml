@@ -30,7 +30,8 @@
 	<properties>
 		<java.version>21</java.version>
 		<javafaker.version>1.0.2</javafaker.version>
-		<sonar.organization>artivisi-intermedia</sonar.organization>
+		<sonar.organization>yeahbutstill</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<jacoco.version>0.8.12</jacoco.version>
 		<selenium.version>4.26.0</selenium.version>
 	</properties>
