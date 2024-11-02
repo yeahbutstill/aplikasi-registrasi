@@ -30,6 +30,8 @@
 		<java.version>21</java.version>
 		<spring-modulith.version>1.2.4</spring-modulith.version>
 		<javafaker.version>1.0.2</javafaker.version>
+		<sonar.organization>yeahbutstill</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
