@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: 'postgres:16'
+    environment:
+      - 'POSTGRES_DB=registrasidb'
+      - 'POSTGRES_PASSWORD=sangatrahasia123'
+      - 'POSTGRES_USER=registrasi'
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'
+    volumes:
+      - './data/db-registrasi:/var/lib/postgresql/data'
