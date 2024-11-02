@@ -16,8 +16,6 @@ import org.testcontainers.containers.VncRecordingContainer.VncRecordingFormat;
 @TestConfiguration(proxyBeanMethods = false)
 public class TestcontainersConfiguration {
 
-	public static final String TESTCONTAINER_HOST_URL = "http://host.testcontainers.internal";
-
 	private static final File RECORDING_OUTPUT_FOLDER = new File("./target/selenium-recordings/");
 
 	@Bean

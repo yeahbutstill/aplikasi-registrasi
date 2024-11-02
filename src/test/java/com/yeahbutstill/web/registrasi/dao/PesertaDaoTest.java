@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Sql(scripts = {"classpath:/sql/clear-sample-data.sql", "classpath:/sql/sample-data-peserta.sql"})
 class PesertaDaoTest {
+
     private static final String SQL_SELECT_PESERTA = """
             select * from peserta where id_peserta = ?
             """;
