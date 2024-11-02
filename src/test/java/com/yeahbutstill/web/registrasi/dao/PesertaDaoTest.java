@@ -36,29 +36,29 @@ class PesertaDaoTest {
     void testInsertPeserta() {
         Peserta peserta = new Peserta();
         peserta.setIdPeserta("9b5a9564-ec3d-493c-b045-019aad61bfdc");
-        peserta.setNama("Yehezkiel");
+        peserta.setFullname("Yehezkiel");
         peserta.setJenisKelamin("Laki-laki");
         peserta.setTanggalLahir(LocalDate.of(1993, 11, 26));
         peserta.setAlamat("Jl. Kebon Jeruk");
-        peserta.setNoHp("081234567890");
+        peserta.setNomorHandphone("081234567890");
         peserta.setEmail("yehezkiel@gmail.com");
         peserta.setFoto("foto.jpg");
         pesertaDao.save(peserta);
 
         assertNotNull(peserta.getIdPeserta());
-        assertEquals("Yehezkiel", peserta.getNama());
+        assertEquals("Yehezkiel", peserta.getFullname());
         assertEquals("Laki-laki", peserta.getJenisKelamin());
         assertEquals("yehezkiel@gmail.com", peserta.getEmail());
-        assertEquals("081234567890", peserta.getNoHp());
+        assertEquals("081234567890", peserta.getNomorHandphone());
         assertEquals("foto.jpg", peserta.getFoto());
         assertEquals(LocalDate.of(1993, 11, 26), peserta.getTanggalLahir());
         assertEquals("Jl. Kebon Jeruk", peserta.getAlamat());
 
         assertNotNull(peserta.getTanggalLahir());
         assertNotNull(peserta.getIdPeserta());
-        assertNotNull(peserta.getNama());
+        assertNotNull(peserta.getFullname());
         assertNotNull(peserta.getAlamat());
-        assertNotNull(peserta.getNoHp());
+        assertNotNull(peserta.getNomorHandphone());
         assertNotNull(peserta.getEmail());
         assertNotNull(peserta.getFoto());
         assertNotNull(peserta.getJenisKelamin());
@@ -76,11 +76,11 @@ class PesertaDaoTest {
         String foto = faker.avatar().image();
 
         Peserta peserta = new Peserta();
-        peserta.setNama(nama);
+        peserta.setFullname(nama);
         peserta.setJenisKelamin(jenisKelamin);
         peserta.setTanggalLahir(tanggalLahir);
         peserta.setAlamat(alamat);
-        peserta.setNoHp(noHp);
+        peserta.setNomorHandphone(noHp);
         peserta.setEmail(email);
         peserta.setFoto(foto);
 
@@ -96,10 +96,10 @@ class PesertaDaoTest {
         assertNotNull(selectPesertaId);
 
         assertEquals(savePeserta.getIdPeserta(), selectPesertaId.getIdPeserta());
-        assertEquals(savePeserta.getNama(), selectPesertaId.getNama());
+        assertEquals(savePeserta.getFullname(), selectPesertaId.getFullname());
         assertEquals(savePeserta.getJenisKelamin(), selectPesertaId.getJenisKelamin());
         assertEquals(savePeserta.getAlamat(), selectPesertaId.getAlamat());
-        assertEquals(savePeserta.getNoHp(), selectPesertaId.getNoHp());
+        assertEquals(savePeserta.getNomorHandphone(), selectPesertaId.getNomorHandphone());
         assertEquals(savePeserta.getEmail(), selectPesertaId.getEmail());
         assertEquals(savePeserta.getFoto(), selectPesertaId.getFoto());
         assertEquals(savePeserta.getTanggalLahir(), selectPesertaId.getTanggalLahir());
@@ -120,7 +120,7 @@ class PesertaDaoTest {
     void testFindById() {
         Peserta peserta = pesertaDao.findById("d0dcd42d-d47c-4b13-8bf5-f96412e6f58f").orElse(null);
         assertNotNull(peserta);
-        assertEquals("Dimas Maryanto", peserta.getNama());
+        assertEquals("Dimas Maryanto", peserta.getFullname());
     }
 
     @Test

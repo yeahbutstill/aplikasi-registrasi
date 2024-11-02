@@ -12,12 +12,12 @@ CREATE TABLE event_publication (
 
 create table peserta (
 	id_peserta varchar(255) not null,
-	nama varchar(100) not null,
-	jenis_kelamin varchar(50) not null,
-	tanggal_lahir date not null,
-	alamat varchar(255) not null,
-	no_hp varchar(15) not null,
+	fullname varchar(100) not null,
+	jenis_kelamin varchar(50),
+	tanggal_lahir date,
+	alamat varchar(255),
+	nomor_handphone varchar(15) not null,
 	email varchar(255) not null,
-	foto varchar(255) not null,
+	foto varchar(255),
 	primary key (id_peserta)
 );

@@ -16,7 +16,7 @@ public class Peserta {
     private String idPeserta;
 
     @NotEmpty @NotNull @Size(min = 3, max = 100)
-    private String nama;
+    private String fullname;
 
     @NotEmpty @NotNull @Size(min = 4, max = 50)
     private String jenisKelamin;
@@ -28,11 +28,11 @@ public class Peserta {
     private String alamat;
 
     @NotEmpty @NotNull @Size(min = 10, max = 15)
-    private String noHp;
+    private String nomorHandphone;
 
     @NotEmpty @NotNull @Email @Size(min = 10, max = 255)
     private String email;
 
-    @NotEmpty @NotNull @Size(min = 8, max = 255)
+    @NotEmpty @NotNull
     private String foto;
 }
