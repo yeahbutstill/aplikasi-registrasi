@@ -1,0 +1,3 @@
+fullname,email,nomor_handphone,sukses,error_message_name,error_message_email,error_message_handphone
+Peserta 001,peserta001@gmail.com,08123456789,true,,,
+P,gmail.com,,false,size must be between 3 and 50,must be a well-formed email address,must not be empty

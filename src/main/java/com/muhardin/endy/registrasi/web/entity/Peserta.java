@@ -9,15 +9,19 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-@Entity @Data
+@Entity
+@Data
 public class Peserta {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @NotEmpty @Size(min = 3, max = 255)
+    @NotEmpty
+    @Size(min = 3, max = 50)
     private String fullname;
 
-    @NotEmpty @Email
+    @NotEmpty
+    @Email
     private String email;
 
     @NotEmpty

@@ -9,12 +9,17 @@ import lombok.Data;
 @Data
 public class RegistrasiDto {
 
-    @NotNull @NotEmpty @Size(min = 3, max = 255)
+    @NotNull
+    @NotEmpty
+    @Size(min = 3, max = 50)
     private String fullname;
 
-    @NotNull @NotEmpty @Email
+    @NotNull
+    @NotEmpty
+    @Email
     private String email;
 
-    @NotNull @NotEmpty
+    @NotNull
+    @NotEmpty
     private String nomorHandphone;
 }

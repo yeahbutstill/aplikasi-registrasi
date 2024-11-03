@@ -12,7 +12,8 @@ Tambahkan entri berikut di `/etc/hosts`
 
 Cara menjalankan:
 
-1. Jalankan aplikasi `auth-server` yang ada di [repo BFF](https://gitlab.com/endymuhardin/belajar-spring-oauth-bff/-/tree/main/authserver)
+1. Jalankan aplikasi `auth-server` yang ada
+   di [repo BFF](https://gitlab.com/endymuhardin/belajar-spring-oauth-bff/-/tree/main/authserver)
 
 2. Browse ke `http://client-app:10002/home`
 
