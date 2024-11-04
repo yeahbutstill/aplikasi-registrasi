@@ -7,5 +7,7 @@ services:
       - 'POSTGRES_USER=registrasi'
     ports:
       - '5432:5432'
+    expose:
+      - '5432'
     volumes:
       - ./db-registrasi:/var/lib/postgresql/data

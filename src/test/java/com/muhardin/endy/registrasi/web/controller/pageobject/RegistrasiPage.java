@@ -1,87 +1,85 @@
 package com.muhardin.endy.registrasi.web.controller.pageobject;
 
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.util.StringUtils;
 
 import java.time.Duration;
-import java.util.Objects;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegistrasiPage {
 
-    private static final String REGISTRASI_PAGE_TITLE = "Registrasi Peserta";
-    private static final String REGISTRASI_SUKSES_PAGE_TITLE = "Registrasi Berhasil";
+    public static final String TITLE_PAGE_REGISTRASI = "Registrasi Peserta";
+    public static final String TITLE_PAGE_REGISTRASI_SUKSES = "Registrasi Berhasil";
 
-    private final WebDriver webDriver;
+    private WebDriver webDriver;
 
     // input elements
     @FindBy(id = "fullname")
-    private WebElement textFullname;
-
+    private WebElement txtFullname;
     @FindBy(id = "email")
-    private WebElement textEmail;
-
+    private WebElement txtEmail;
     @FindBy(name = "nomorHandphone")
-    private WebElement textNomorHandphone;
-
+    private WebElement txtNomorHandphone;
     @FindBy(xpath = "/html/body/main/form/button")
     private WebElement btnSubmit;
 
-    // error message
-    @FindBy(id = "validationFullname")
-    private WebElement errorMessageFullname;
+    public RegistrasiPage(WebDriver wd, String url) {
+        wd.get(url);
+        new WebDriverWait(wd, Duration.ofSeconds(5))
+                .until(ExpectedConditions.titleIs(TITLE_PAGE_REGISTRASI));
 
-    @FindBy(id = "validationEmail")
-    private WebElement errorMessageEmail;
-
-    @FindBy(id = "validationNomorHandphone")
-    private WebElement errorMessageNomorHandphone;
-
-    public RegistrasiPage(WebDriver webDriver, String url) {
-        webDriver.get(url);
-        new WebDriverWait(webDriver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.titleIs(REGISTRASI_PAGE_TITLE));
-        PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
+        PageFactory.initElements(wd, this);
+        this.webDriver = wd;
     }
 
     public void isiNama(String nama) {
-        textFullname.sendKeys(nama);
+        txtFullname.sendKeys(nama);
     }
 
     public void isiEmail(String email) {
-        textEmail.sendKeys(email);
+        txtEmail.sendKeys(email);
     }
 
-    public void isiNomorHandphone(String nomorHandphone) {
-        textNomorHandphone.sendKeys(nomorHandphone);
+    public void isiNomorHandphone(String no) {
+        txtNomorHandphone.sendKeys(no);
     }
 
-    public void submit() {
+    public String register() {
         btnSubmit.click();
+        return webDriver.getTitle();
     }
 
-    public void checkSuksesRegistrasi() {
-        new WebDriverWait(webDriver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.titleIs(REGISTRASI_SUKSES_PAGE_TITLE));
-        assertTrue(Objects.requireNonNull(webDriver.getPageSource()).contains("Registrasi Berhasil"));
+    public void cekSuksesRegistrasi() {
+        Assertions.assertTrue(webDriver.getPageSource().contains("Registrasi Sukses"));
     }
 
-    public void checkErrorFullname(String errorMessage) {
-        assertTrue(errorMessageFullname.getText().contains(errorMessage));
+    public void cekErrorFullname(String errorMessage) {
+        if (StringUtils.hasText(errorMessage)) {
+            checkErrorField("validationFullname", errorMessage);
+        }
     }
 
-    public void checkErrorEmail(String errorMessage) {
-        assertEquals(errorMessage, errorMessageEmail.getText());
+    public void cekErrorEmail(String errorMessage) {
+        if (StringUtils.hasText(errorMessage)) {
+            checkErrorField("validationEmail", errorMessage);
+        }
     }
 
-    public void checkErrorNomorHandphone(String errorMessage) {
-        assertEquals(errorMessage, errorMessageNomorHandphone.getText());
+    public void cekErrorHandphone(String errorMessage) {
+        if (StringUtils.hasText(errorMessage)) {
+            checkErrorField("validationNomorHandphone", errorMessage);
+        }
+    }
+
+    private void checkErrorField(String elementId, String error) {
+        WebElement errorField = webDriver.findElement(By.id(elementId));
+        Assertions.assertNotNull(errorField);
+        Assertions.assertTrue(errorField.getText().contains(error));
     }
 }
